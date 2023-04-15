@@ -6,22 +6,27 @@ import '../App.css';
 import { Box, Button, Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, VStack, useDisclosure } from '@chakra-ui/react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { patchData } from '../Redux/Auth/action';
+import Navbar from '../Components/Navbar';
 
 const Play = () => {
   
   let store = useSelector((store) => store.reducer)
-  const { name, level,score } = store
-  console.log('store:Play', store.name, store.level, store.score)
+  const { name,id,level,score } = store
+  // console.log('store:Play', store)
   const { isOpen, onOpen, onClose } = useDisclosure()
   let dispatch = useDispatch()
   const navigate = useNavigate()
   const [arr, setArr] = useState([])
   const [sorted, setSorted] = useState([])
   const [delay, setDelay] = useState(20)
-  const [result, setResult] = useState(false)
-  const [lost,setLost] = useState(false)
+  const [playAgain, setPlayAgain] = useState(false)
+  const [lost, setLost] = useState(false)
   
-
+  const playagain=()=>{
+    // console.log(playAgain);
+    onClose()
+    setPlayAgain(true)
+  }
   function generateRandomNumbers(difficultyLevel) {
     let count;
     switch (difficultyLevel) {
@@ -43,23 +48,22 @@ const Play = () => {
       randomNumbers.push(randomNumber);
     }
     setArr(randomNumbers)
-    // setSorted([...randomNumbers])
     let sarr = [...randomNumbers]
     setSorted(sarr.sort((a, b) => a - b))
     return randomNumbers;
   }
   useEffect(() => {
+    console.log("Effect",playAgain);
     generateRandomNumbers(level)
     if (level == "Easy") {
       setDelay(30)
     } else if (level == "Medium") {
-      setDelay(40)
+      setDelay(50)
     } else if (level == "Hard") {
       setDelay(30)
     }
-  }, [level])
+  }, [level,playAgain])
 
-  console.log("sorted array", sorted);
 
   function checkSort() {
     let flag = true
@@ -75,11 +79,10 @@ const Play = () => {
 
   useEffect(() => {
     isSorted = checkSort()
-    console.log(isSorted);
   }, [arr])
 
   const renderTime = ({ elapsedTime, remainingTime }) => {
-
+    
     if (delay && elapsedTime == delay) {
       onOpen()
       // alert("Game Over")
@@ -88,12 +91,17 @@ const Play = () => {
         // alert("won")
         setLost(true)
         if (level && level == "Easy") {
-          console.log("chhhh");
-            dispatch(patchData({name, score:score+5}))
-        } else if (level && level == "Medium") {
-          dispatch(patchData({name, score:score+7}))
-        } else if (level && level == "Hard") {
-          dispatch(patchData({name, score:score+10}))
+            dispatch(patchData({...store, score:score+5}))
+            setDelay(0)
+            setPlayAgain(false)
+          } else if (level && level == "Medium") {
+            dispatch(patchData({...store, score:score+7}))
+            setDelay(0)
+            setPlayAgain(false)
+          } else if (level && level == "Hard") {
+            dispatch(patchData({...store, score:score+10}))
+            setDelay(0)
+            setPlayAgain(false)
         }
         console.log(store);
         onOpen()
@@ -108,7 +116,6 @@ const Play = () => {
       </div>
     );
   };
-  // console.log('result:', result)
 
   function handleDrag(result) {
     let newArray = [...arr]
@@ -118,9 +125,9 @@ const Play = () => {
     setArr(newArray)
   }
 
-  console.log("222",store);
   return (
-    <div className="App">
+    <div className='gamebg'>
+      <Navbar/>
       <div className="wrapper">
         <CountdownCircleTimer
           isPlaying
@@ -140,13 +147,13 @@ const Play = () => {
             droppableId="character"
           >
             {provided =>
-              <Box display="flex" justifyContent="space-evenly" alignItems="center" width="88%" border="1px solid blue"
+              <Box className='dragZone'
                 ref={provided.innerRef}
                 {...provided.droppableProps}>
                 {arr.map((item, i) => (
                   <Draggable key={String(item)} draggableId={String(item)} index={i}>
                     {(provided, snapshot) => (
-                      <Text border="1px solid red" padding="10px" width="5%"
+                      <Text className='numberBox'
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
@@ -180,9 +187,7 @@ const Play = () => {
             }}>
               Quit
             </Button>
-            <Button variant='ghost' onClick={()=>{
-                window.location.reload()
-            }}>Play Again</Button>
+            <Button variant='ghost' onClick={()=>playagain()}>Play Again</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

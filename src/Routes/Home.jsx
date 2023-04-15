@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../Components/Navbar'
 import { Box, Button, Heading, Input } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux'
-import { postData } from '../Redux/Auth/action'
+import { del, postData } from '../Redux/Auth/action'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Home = () => {
   const [name, setName] = useState("")
@@ -14,10 +15,11 @@ const Home = () => {
   const { isAuth } = useSelector((store) => store.reducer)
 
   const handleSubmit = () => {
-    console.log("click");
+    // dispatch(del(1))
     let userData = {
       name, level, score:0
     }
+    console.log(userData);
     dispatch(postData(userData))
   }
 
@@ -27,11 +29,11 @@ const Home = () => {
   }, [isAuth])
 
   return (
-    <div>
+    <div className='homebg'>
       <Navbar />
       <Box mt={3}>       
-        <Heading>Arrange Number game</Heading>
-        <form style={{display:"flex",flexDirection:"column" ,gap:'8px' ,padding:"8px",width:"30%",margin:"auto",marginTop:"70px"}} >
+        <Heading >Arrange Number game</Heading>
+        <form className='forms' >
         <Input placeholder="Enter your name" value={name} onChange={(e)=>setName(e.target.value)} />
             <select value={level} onChange={(e)=>setLevel(e.target.value)}>
                 <option value="Easy">Easy</option>

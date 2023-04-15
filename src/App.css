@@ -1,12 +1,27 @@
 .App {
   text-align: center;
 }
-
+.gamebg{
+  background-image: url("https://images.unsplash.com/photo-1502570149819-b2260483d302?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bnVtYmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
+  height: 650px;
+background-size: 100%;
+}
+.leaderbg{
+  background-image: url("https://images.unsplash.com/flagged/photo-1578928534298-9747fc52ec97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d2lubmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
+  height: 650px;
+  background-size: 100%;
+}
+.homebg{
+  background-image: url("https://plus.unsplash.com/premium_photo-1661454009753-6f351f57ca9d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGxheSUyMGdhbWV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60");
+  height: 650px;
+  background-size: 100%;
+}
 .wrapper {
   display: flex;
   justify-content: space-between;
   margin: 50px 100px;
-  border: 1px solid red;
+  background-color: white;
+  color: black;
 }
 
 .timer {
@@ -24,7 +39,60 @@
   font-size: 40px;
 }
 
+.dragZone{
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+width: 90%;
+/* border: 2px solid black; */
+box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
 
+.numberBox{
+  border: 1px solid black;
+  padding: 1%;
+  width: 5%;
+  border-radius: 10%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+table{
+  border: 2px solid black;
+  padding: 10%;
+  margin: 5% 5%;
+  width: 60%;
+  margin: auto;
+  margin-top: 30px;
+  /* background-color: rgb(218, 232, 151); */
+  background-color: whitesmoke;
+}
+tr{
+  border: 1px solid black;
+  font-size: 16px;
+}
+
+td{
+  border: 1px solid black;
+  font-weight: 700;
+  color: teal;
+}
+
+th{
+  border: 1px solid black;
+  color: tomato;
+padding: 10px;
+}
+/* style={{display:"flex",flexDirection:"column" ,gap:'8px' ,padding:"8px",width:"30%",margin:"auto",marginTop:"70px"}} */
+.forms{
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  width: 30%;
+  margin: auto;
+  margin-top: 50px;
+}
 
 .App-logo {
   height: 40vmin;

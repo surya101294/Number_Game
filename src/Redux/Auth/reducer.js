@@ -4,18 +4,21 @@ const initialState = {
     isAuth: false,
     level: "",
     name: "",
+    id:null,
     score: 0,
     isLoading: false,
     isError: false,
 }
 
 const reducer = (state = initialState, { type, payload }) => {
+    console.log("payload",payload)
     switch (type) {
         case POST_USER_REQUEST:
             return { ...state, isLoading: true }
 
         case POST_USER_SUCCESS:
-            return { ...state, isLoading: false, level: payload.level, name: payload.name, isAuth: true }
+            console.log({ ...state, isLoading: false, level: payload.level,score:payload.score, name: payload.name,id: payload.id, isAuth: true })
+            return { ...state, isLoading: false, level: payload.level,score:payload.score, name: payload.name,id: payload.id, isAuth: true }
 
         case POST_USER_FAILURE:
             return { ...state, isError: false }

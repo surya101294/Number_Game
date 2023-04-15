@@ -38,7 +38,7 @@ export default function Navbar() {
   return (
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
-        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+        <Flex h={14} alignItems={'center'} justifyContent={'space-between'}>
          <Link href={"/"}><Box>Number Game</Box> </Link> 
          <Link href={"/play"}><Box>Play Game</Box> </Link> 
          <Link href={"/leaderboard"}><Box>LeaderBoard</Box> </Link> 
@@ -50,7 +50,7 @@ export default function Navbar() {
               </Button>
 
               <Menu>
-                <MenuButton
+                {/* <MenuButton
                   as={Button}
                   rounded={'full'}
                   variant={'link'}
@@ -78,7 +78,7 @@ export default function Navbar() {
                   <MenuItem>Your Servers</MenuItem>
                   <MenuItem>Account Settings</MenuItem>
                   <MenuItem>Logout</MenuItem>
-                </MenuList>
+                </MenuList> */}
               </Menu>
             </Stack>
           </Flex>
