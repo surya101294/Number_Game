@@ -9,9 +9,9 @@ import { patchData } from '../Redux/Auth/action';
 import Navbar from '../Components/Navbar';
 
 const Play = () => {
-  
+
   let store = useSelector((store) => store.reducer)
-  const { name,id,level,score } = store
+  const { name, id, level, score } = store
   // console.log('store:Play', store)
   const { isOpen, onOpen, onClose } = useDisclosure()
   let dispatch = useDispatch()
@@ -21,8 +21,8 @@ const Play = () => {
   const [delay, setDelay] = useState(20)
   const [playAgain, setPlayAgain] = useState(false)
   const [lost, setLost] = useState(false)
-  
-  const playagain=()=>{
+
+  const playagain = () => {
     // console.log(playAgain);
     onClose()
     setPlayAgain(true)
@@ -53,7 +53,7 @@ const Play = () => {
     return randomNumbers;
   }
   useEffect(() => {
-    console.log("Effect",playAgain);
+    console.log("Effect", playAgain);
     generateRandomNumbers(level)
     if (level == "Easy") {
       setDelay(30)
@@ -62,7 +62,7 @@ const Play = () => {
     } else if (level == "Hard") {
       setDelay(30)
     }
-  }, [level,playAgain])
+  }, [level, playAgain])
 
 
   function checkSort() {
@@ -70,7 +70,7 @@ const Play = () => {
     for (let i = 0; i < arr.length; i++) {
       if (arr[i] != sorted[i]) {
         flag = false
-        return 
+        return
       }
     }
     return flag
@@ -82,7 +82,7 @@ const Play = () => {
   }, [arr])
 
   const renderTime = ({ elapsedTime, remainingTime }) => {
-    
+
     if (delay && elapsedTime == delay) {
       onOpen()
       // alert("Game Over")
@@ -91,17 +91,17 @@ const Play = () => {
         // alert("won")
         setLost(true)
         if (level && level == "Easy") {
-            dispatch(patchData({...store, score:score+5}))
-            setDelay(0)
-            setPlayAgain(false)
-          } else if (level && level == "Medium") {
-            dispatch(patchData({...store, score:score+7}))
-            setDelay(0)
-            setPlayAgain(false)
-          } else if (level && level == "Hard") {
-            dispatch(patchData({...store, score:score+10}))
-            setDelay(0)
-            setPlayAgain(false)
+          dispatch(patchData({ ...store, score: score + 5 }))
+          setDelay(0)
+          setPlayAgain(false)
+        } else if (level && level == "Medium") {
+          dispatch(patchData({ ...store, score: score + 7 }))
+          setDelay(0)
+          setPlayAgain(false)
+        } else if (level && level == "Hard") {
+          dispatch(patchData({ ...store, score: score + 10 }))
+          setDelay(0)
+          setPlayAgain(false)
         }
         console.log(store);
         onOpen()
@@ -127,7 +127,7 @@ const Play = () => {
 
   return (
     <div className='gamebg'>
-      <Navbar/>
+      <Navbar />
       <div className="wrapper">
         <CountdownCircleTimer
           isPlaying
@@ -140,7 +140,7 @@ const Play = () => {
         >
           {renderTime}
         </CountdownCircleTimer>
-        
+
         <DragDropContext onDragEnd={handleDrag} >
           <Droppable
             direction="horizontal"
@@ -175,19 +175,19 @@ const Play = () => {
           <ModalCloseButton />
           <ModalBody >
             <VStack>
-            <Heading size={"2xl"}>{!lost ? "😔" : "🥳"}</Heading>
-            <Heading size={"lg"}>{!lost ? "Oh no !" : "You Won"}</Heading>  
+              <Heading size={"2xl"}>{!lost ? "😔" : "🥳"}</Heading>
+              <Heading size={"lg"}>{!lost ? "Oh no !" : "You Won"}</Heading>
             </VStack>
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={()=>{
-                onClose()
-                navigate("/")
+            <Button colorScheme='blue' mr={3} onClick={() => {
+              onClose()
+              navigate("/")
             }}>
               Quit
             </Button>
-            <Button variant='ghost' onClick={()=>playagain()}>Play Again</Button>
+            <Button variant='ghost' onClick={() => playagain()}>Play Again</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

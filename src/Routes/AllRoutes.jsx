@@ -7,9 +7,9 @@ import LeaderBoard from './LeaderBoard'
 const AllRoutes = () => {
   return (
     <Routes>
-        <Route path={'/'} element={<Home/>}></Route>
-        <Route path={'/play'} element={<Play/>}></Route>
-        <Route path={'/leaderboard'} element={<LeaderBoard/>}></Route>
+      <Route path={'/'} element={<Home />}></Route>
+      <Route path={'/play'} element={<Play />}></Route>
+      <Route path={'/leaderboard'} element={<LeaderBoard />}></Route>
     </Routes>
   )
 }
