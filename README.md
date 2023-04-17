@@ -1,16 +1,47 @@
 # Number Game
 
-## `**Instructions**`
+# TechStack
+ # Front-End
+- HTML
+- CSS
+- JavaScript
+- React
 
-- Read the entire question carefully for at least 15 mins, understand it and then code it.
-- Don’t jump directly into the code.
-- Commit your code every hour with a proper commit message to your repository (we will monitor every commit)
-- Use **React** to solve this question.
-- Use **Redux** for state management.
-- Use **Chakra-UI** for styled components.
-- Use **json-server** as backend.
+# Back-End
+- NodeJS
+- Express
+- MongoDB
 
----
+# External CSS Library
+-Chakra UI
+
+#Front-End Deployment - vercel
+#Back-End Deployment - render
+
+# Homepage
+<table>
+  <tr>
+    <td valign="top"><img src="https://user-images.githubusercontent.com/112858852/232585033-d4b36517-e978-4a84-bf8b-5df458c0c6ea.png"/></td>
+    
+  </tr>
+</table>
+
+# Playgame Page
+<table>
+  <tr>
+    <td valign="top"><img src="https://user-images.githubusercontent.com/112858852/232585542-5f114e29-2af1-4d02-b33a-eb5a828b2d54.png"/></td>
+    <td valign="top"><img src="https://user-images.githubusercontent.com/112858852/232585633-7dd115fe-9531-43e7-bf2a-b9a451859a39.png"/></td>
+  </tr>
+</table>
+
+# Leaderboard Page
+<table>
+  <tr>
+    <td valign="top"><img src="https://user-images.githubusercontent.com/112858852/232585658-12dbd855-8df8-426c-8df9-fa4df39a7dde.png"/></td>
+  </tr>
+</table>
+
+
 
 # `**Problem Statement**`
 
@@ -18,14 +49,14 @@ The objective is to create a Number Game featuring three different levels of dif
 
 ## `**Routes**`
 
-- Your app should have the following routes
+- App have the following routes
     - Home Route **( / ) - Include in Navbar**
     - Play Route  **( /play ) - Don’t Include in Navbar**
     - Leaderboard Route **( /leaderboard ) - Include in Navbar**
 
 ## `**Home Route**`
 
-- Your home Route should have a form which takes following information from the user
+- Home Route should have a form which takes following information from the user
     - Name
     - Difficulty level (Select tag with Easy, Medium, and Hard as options)
 - Upon submitting the form, store the data in json-server and the user will be directed to the **Play Route**.
@@ -68,23 +99,3 @@ The objective is to create a Number Game featuring three different levels of dif
     - Medium Level - ( 7 Points)
     - Hard Level - (10 Points)
 - Note : When the player completes two games, one at the Easy level and the other at the Medium level, their total score will be calculated as the sum of the scores of each game. For instance, the player will obtain a score of 12 points if they successfully complete both games, as the Easy level awards 5 points and the Medium level awards 7 points.
-- Use **JSON-Server** to implement this functionality.
-
----
-
-### **`Submission`**
-
-- Please submit deployed link and Github link of the code.
-- Please double-check if deployed version works or not (run the deployed version on your laptop and then submit it)
-- Any issues in the deployed link will be considered null and void.
-- Please verify your submissions are correct.
-- Make sure you follow all instructions carefully.
-- Submit before the deadline.
-
-### **`Rubrics`**
-
-- React
-- Drag and Drop
-- Redux
-- UI
-- Code cleanliness and folder structure.
